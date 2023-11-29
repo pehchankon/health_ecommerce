@@ -126,7 +126,7 @@ class HomePage extends StatelessWidget {
             color: AppColors.secondaryCyanColor,
             shape: BoxShape.circle,
           ),
-          child: BlocBuilder<ShoppingCartCubit, List<int>>(
+          child: BlocBuilder<ShoppingCartCubit, List<PackageModel>>(
               builder: (context, state) {
             return Text(
               state.length.toString(),
