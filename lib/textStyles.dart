@@ -27,6 +27,14 @@ class AppTextStyles {
       primaryPurpleMediumText20.copyWith(
     fontSize: 11.2.sp,
   );
+  static final TextStyle primaryPurpleMediumText13 =
+      primaryPurpleMediumText20.copyWith(
+    fontSize: 11.8.sp,
+  );
+  static final TextStyle primaryPurpleMediumText14 =
+      primaryPurpleMediumText20.copyWith(
+    fontSize: 12.6.sp,
+  );
 
 
   //// primary purple bold text w700
@@ -39,6 +47,7 @@ class AppTextStyles {
       primaryPurpleBoldText10.copyWith(
         fontSize: 7.5.sp,
   );
+
 
   //// primary white bold text w700
   static final TextStyle primaryWhiteBoldText10 = GoogleFonts.inter(
@@ -53,6 +62,10 @@ class AppTextStyles {
   static final TextStyle primaryWhiteBoldText12 =
       primaryWhiteBoldText10.copyWith(
         fontSize: 11.2.sp,
+  );
+  static final TextStyle primaryWhiteBoldText14 =
+      primaryWhiteBoldText10.copyWith(
+        fontSize: 12.6.sp,
   );
 
 
@@ -77,13 +90,16 @@ class AppTextStyles {
   );
 
 
-  //// grey text
+  //// grey text w400
   static final TextStyle greyText6 = GoogleFonts.inter(
     fontWeight: FontWeight.w400,
-    color: AppColors.appBarTitleBlackColor,
+    color: AppColors.greyColor,
     fontSize: 6.sp,
   );
-
+  static final TextStyle greyText11 = 
+    greyText6.copyWith(
+      fontSize: 10.sp,
+  );
 
   //// primary black medium text w500
   static final TextStyle primaryBlackMediumText18 = GoogleFonts.inter(
@@ -106,5 +122,17 @@ class AppTextStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.secondaryDarkCyanColor,
     fontSize: 16.5.sp,
+  );
+  static final TextStyle secondaryDarkCyanSemiBoldText16 = 
+    secondaryDarkCyanSemiBoldText18.copyWith(
+      fontSize: 14.5.sp,
+  );
+
+
+  //// secondary dark-blue-grey semi-bold text w600
+  static final TextStyle secondaryDarkBlueGreySemiBoldText15 = GoogleFonts.inter(
+    fontWeight: FontWeight.w600,
+    color: AppColors.secondaryDarkBlueGreyColor,
+    fontSize: 13.5.sp,
   );
 }

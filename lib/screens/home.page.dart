@@ -3,6 +3,7 @@ import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/models/package.model.dart';
 import 'package:alemeno_intern/models/test.model.dart';
+import 'package:alemeno_intern/screens/shopping_cart.page.dart';
 import 'package:alemeno_intern/textStyles.dart';
 import 'package:alemeno_intern/widgets/large_package_card.widget.dart';
 import 'package:alemeno_intern/widgets/small_package_card.widget.dart';
@@ -36,7 +37,7 @@ class HomePage extends StatelessWidget {
     final shoppingCartCubit = context.read<ShoppingCartCubit>();
 
     return Scaffold(
-      appBar: _appBar(shoppingCartCubit),
+      appBar: _appBar(shoppingCartCubit, context),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -110,7 +111,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  AppBar _appBar(shoppingCartCubit) {
+  AppBar _appBar(shoppingCartCubit, context) {
     return AppBar(
       systemOverlayStyle: kSystemUiOverlayStyle,
       title: Text(
@@ -135,7 +136,12 @@ class HomePage extends StatelessWidget {
           }),
         ),
         GestureDetector(
-          onTap: () => print('cart'),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ShoppingCartPage(),
+            ),
+          ),
           child: Icon(
             Icons.shopping_cart_rounded,
             color: AppColors.primaryPurpleColor,

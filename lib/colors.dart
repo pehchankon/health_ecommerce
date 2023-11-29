@@ -12,4 +12,5 @@ class AppColors {
   static const Color lighGreyColor = Color.fromRGBO(176, 176, 176, 1);
   static const Color offWhiteColor = Color.fromRGBO(211, 211, 211, 1);
   static const Color primaryBlackColor = Colors.black;
+  static const Color secondaryDarkBlueGreyColor = Color.fromRGBO(15, 23, 42, 1);
 }

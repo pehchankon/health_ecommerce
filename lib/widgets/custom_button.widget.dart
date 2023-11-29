@@ -86,8 +86,8 @@ class _CustomButtonState extends State<CustomButton> {
       _padding = 8.sp;
     } else if (widget.buttonSize == ButtonSize.large) {
       _textStyle = widget.isFilled
-          ? AppTextStyles.primaryWhiteBoldText8
-          : AppTextStyles.primaryPurpleMediumText8;
+          ? AppTextStyles.primaryWhiteBoldText14
+          : AppTextStyles.primaryPurpleMediumText14;
       _padding = 10.sp;
     }
 
