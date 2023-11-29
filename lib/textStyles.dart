@@ -35,6 +35,10 @@ class AppTextStyles {
     color: AppColors.primaryPurpleColor,
     fontSize: 9.sp,
   );
+  static final TextStyle primaryPurpleBoldText8 = 
+      primaryPurpleBoldText10.copyWith(
+        fontSize: 7.5.sp,
+  );
 
   //// primary white bold text w700
   static final TextStyle primaryWhiteBoldText10 = GoogleFonts.inter(

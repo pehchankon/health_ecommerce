@@ -1,9 +1,11 @@
+import 'package:alemeno_intern/blocs/shopping_cart.bloc.dart';
 import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/models/package.model.dart';
 import 'package:alemeno_intern/textStyles.dart';
 import 'package:alemeno_intern/widgets/custom_button.widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 
@@ -15,6 +17,8 @@ class SmallPackageCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final shoppingCartCubit = context.read<ShoppingCartCubit>();
+
     return Container(
       child: Stack(
         children: [
@@ -88,8 +92,10 @@ class SmallPackageCard extends StatelessWidget {
                 CustomButton(
                   text: 'Add to cart',
                   onTap: () async {
-                    print('hello');
                     await Future.delayed(Duration(seconds: 2));
+                    print('hello');
+                    shoppingCartCubit.addToCart(package.id);
+                    print(shoppingCartCubit.state.length);
                   },
                   buttonTapBehaviour: ButtonTapBehaviour.action,
                   loadingText: 'Adding to cart',

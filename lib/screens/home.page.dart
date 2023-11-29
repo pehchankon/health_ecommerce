@@ -1,3 +1,4 @@
+import 'package:alemeno_intern/blocs/shopping_cart.bloc.dart';
 import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/models/package.model.dart';
@@ -6,6 +7,7 @@ import 'package:alemeno_intern/textStyles.dart';
 import 'package:alemeno_intern/widgets/large_package_card.widget.dart';
 import 'package:alemeno_intern/widgets/small_package_card.widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 
 class HomePage extends StatelessWidget {
@@ -31,8 +33,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final shoppingCartCubit = context.read<ShoppingCartCubit>();
+    
     return Scaffold(
-      appBar: _appBar(),
+      appBar: _appBar(shoppingCartCubit),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -106,7 +110,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  AppBar _appBar() {
+  AppBar _appBar(shoppingCartCubit) {
     return AppBar(
       systemOverlayStyle: kSystemUiOverlayStyle,
       title: Text(
@@ -115,14 +119,38 @@ class HomePage extends StatelessWidget {
       ),
       centerTitle: true,
       actions: [
-        IconButton(
-          onPressed: () => print('cart'),
-          icon: Icon(
-            Icons.shopping_cart_rounded,
-            color: AppColors.primaryPurpleColor,
-          ),
+        Stack(
+          children: [
+            Positioned(
+              right: 8.w,
+              top: 1.h,
+              child: Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(5.sp),
+                decoration: BoxDecoration(
+                  color: AppColors.secondaryCyanColor,
+                  shape: BoxShape.circle,
+                ),
+                child: BlocBuilder<ShoppingCartCubit,List<int>>(
+                  builder: (context, state) {
+                    return Text(
+                      state.length.toString(),
+                      style: AppTextStyles.primaryPurpleBoldText8,
+                    );
+                  }
+                ),
+              ),
+            ),
+            IconButton(
+              onPressed: () => print('cart'),
+              icon: Icon(
+                Icons.shopping_cart_rounded,
+                color: AppColors.primaryPurpleColor,
+              ),
+            ),
+          ],
         ),
-        SizedBox(width: 10),
+        SizedBox(width: 5.w),
       ],
     );
   }
