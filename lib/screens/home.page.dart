@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final shoppingCartCubit = context.read<ShoppingCartCubit>();
-    
+
     return Scaffold(
       appBar: _appBar(shoppingCartCubit),
       body: SingleChildScrollView(
@@ -119,36 +119,27 @@ class HomePage extends StatelessWidget {
       ),
       centerTitle: true,
       actions: [
-        Stack(
-          children: [
-            Positioned(
-              right: 8.w,
-              top: 1.h,
-              child: Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.all(5.sp),
-                decoration: BoxDecoration(
-                  color: AppColors.secondaryCyanColor,
-                  shape: BoxShape.circle,
-                ),
-                child: BlocBuilder<ShoppingCartCubit,List<int>>(
-                  builder: (context, state) {
-                    return Text(
-                      state.length.toString(),
-                      style: AppTextStyles.primaryPurpleBoldText8,
-                    );
-                  }
-                ),
-              ),
-            ),
-            IconButton(
-              onPressed: () => print('cart'),
-              icon: Icon(
-                Icons.shopping_cart_rounded,
-                color: AppColors.primaryPurpleColor,
-              ),
-            ),
-          ],
+        Container(
+          alignment: Alignment.center,
+          padding: EdgeInsets.all(3.5.sp),
+          decoration: BoxDecoration(
+            color: AppColors.secondaryCyanColor,
+            shape: BoxShape.circle,
+          ),
+          child: BlocBuilder<ShoppingCartCubit, List<int>>(
+              builder: (context, state) {
+            return Text(
+              state.length.toString(),
+              style: AppTextStyles.primaryPurpleBoldText8,
+            );
+          }),
+        ),
+        GestureDetector(
+          onTap: () => print('cart'),
+          child: Icon(
+            Icons.shopping_cart_rounded,
+            color: AppColors.primaryPurpleColor,
+          ),
         ),
         SizedBox(width: 5.w),
       ],
