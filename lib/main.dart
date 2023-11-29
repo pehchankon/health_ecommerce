@@ -14,9 +14,6 @@ Future main() async {
 
   SystemChrome.setSystemUIOverlayStyle(kSystemUiOverlayStyle);
 
-  // final apiClient = ApiClient(kBaseAPIUrl);
-  // final movieRepository = MovieRepository(apiClient);
-
   runApp(MyApp());
 }
 
