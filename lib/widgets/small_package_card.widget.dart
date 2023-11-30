@@ -83,9 +83,7 @@ class SmallPackageCard extends StatelessWidget {
                 text: 'Add to cart',
                 onTap: () async {
                   await Future.delayed(Duration(seconds: 2));
-                  print('hello');
                   shoppingCartCubit.addToCart(package);
-                  print(shoppingCartCubit.state.packages.length);
                 },
                 buttonTapBehaviour: ButtonTapBehaviour.action,
                 loadingText: 'Adding to cart',

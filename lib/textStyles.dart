@@ -124,6 +124,9 @@ class AppTextStyles {
     fontSize: 9.5.sp,
     height: 1.05.sp,
   );
+  static final TextStyle greyAltText16 = greyAltText12.copyWith(
+    fontSize: 14.5.sp,
+  );
 
 
   //// grey-alt2 medium text w500
@@ -195,5 +198,9 @@ class AppTextStyles {
   static final TextStyle secondaryDarkBlueGreyText11 = 
     secondaryDarkBlueGreyText12.copyWith(
       fontSize: 10.sp,
+  );
+  static final TextStyle secondaryDarkBlueGreyText18 = 
+    secondaryDarkBlueGreyText12.copyWith(
+      fontSize: 16.2.sp,
   );
 }

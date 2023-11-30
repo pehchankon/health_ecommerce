@@ -40,4 +40,15 @@ class ShoppingCartCubit extends Cubit<ShoppingCartModel> {
     final updatedState = state.copyWith(hasHardCopy: _hasHardCopy);
     emit(updatedState);
   }
+
+  void clearCart() {
+    emit(ShoppingCartModel(
+      id: 0,
+      packages: [],
+      bookingDateTime: null,
+      hasHardCopy: false,
+      totalCost: 0,
+      totalDiscountedCost: 0,
+    ));
+  }
 }

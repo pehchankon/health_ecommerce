@@ -2,6 +2,7 @@ import 'package:alemeno_intern/blocs/shopping_cart.cubit.dart';
 import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/models/shopping_cart.model.dart';
+import 'package:alemeno_intern/screens/booking_success/booking_success.page.dart';
 import 'package:alemeno_intern/screens/shopping_cart/widgets/hard_copy_report_card.widget.dart';
 import 'package:alemeno_intern/screens/shopping_cart/widgets/select_date_card.widget.dart';
 import 'package:alemeno_intern/screens/shopping_cart/widgets/total_cost_card.widget.dart';
@@ -28,7 +29,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
 
     return Scaffold(
       appBar: _appBar(context),
-      bottomNavigationBar: _bottomBar(),
+      bottomNavigationBar: _bottomBar(shoppingCartCubit),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -69,7 +70,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
     );
   }
 
-  Container _bottomBar() {
+  Container _bottomBar(ShoppingCartCubit shoppingCartCubit) {
     return Container(
       height: 7.h,
       padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -79,7 +80,19 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
               builder: (context, state) {
             return CustomButton(
               text: 'Schedule',
-              onTap: () {},
+              onTap: () {
+                final orderDetails = shoppingCartCubit.state;
+                shoppingCartCubit.clearCart();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BookingSuccessPage(
+                      orderDetails: orderDetails,
+                    ),
+                  ),
+                );
+                
+              },
               isDisabled: state.bookingDateTime == null,
               buttonSize: ButtonSize.large,
             );

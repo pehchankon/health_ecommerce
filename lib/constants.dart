@@ -9,6 +9,7 @@ final kDeleteIcon = 'assets/icons/delete_icon.svg';
 final kUploadIcon = 'assets/icons/upload_icon.svg';
 final kCalendarIcon = 'assets/icons/calendar_icon.svg';
 final kCheckIcon = 'assets/icons/check_icon.svg';
+final kScheduleSuccessIcon = 'assets/icons/schedule_success_icon.svg';
 
 final kSystemUiOverlayStyle = SystemUiOverlayStyle(
   statusBarColor: Colors.white,
