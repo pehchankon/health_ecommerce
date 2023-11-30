@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   _init() async {
+    await Future.delayed(Duration(seconds: 2));
     packages = await dataRepository.fetchAllLabTests();
     package = (await dataRepository.fetchAllPackages())[0];
     setState(() => isLoading = false);
