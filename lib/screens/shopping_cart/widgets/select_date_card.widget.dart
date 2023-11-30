@@ -1,18 +1,17 @@
+import 'package:alemeno_intern/blocs/shopping_cart.cubit.dart';
 import 'package:alemeno_intern/constants.dart';
+import 'package:alemeno_intern/models/shopping_cart.model.dart';
 import 'package:alemeno_intern/screens/book_appointment/book_appointment.page.dart';
 import 'package:alemeno_intern/widgets/generic_card_outline.widget.dart';
 import 'package:alemeno_intern/textStyles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 
 class SelectDateCard extends StatefulWidget {
-  SelectDateCard({
-    super.key,
-    required this.callback,
-  });
-  final Function(DateTime _dateTime) callback;
+  SelectDateCard({super.key});
 
   @override
   State<SelectDateCard> createState() => _SelectDateCardState();
@@ -47,14 +46,7 @@ class _SelectDateCardState extends State<SelectDateCard> {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => BookAppointmentPage(
-            callback: (dateTime) {
-              widget.callback(dateTime);
-              setState(
-                () => text = DateFormat('dd/MM/yyyy  (h a)').format(dateTime),
-              );
-            },
-          ),
+          builder: (context) => BookAppointmentPage(),
         ),
       ),
       child: GenericCardOutline(
@@ -62,12 +54,18 @@ class _SelectDateCardState extends State<SelectDateCard> {
           Container(
             margin: EdgeInsets.symmetric(horizontal: 3.w),
             alignment: Alignment.centerLeft,
-            child: Text(
-              text ?? 'Select date',
-              style: text == null
-                  ? AppTextStyles.greyAltText12
-                  : AppTextStyles.primaryPurpleMediumText12,
-            ),
+            child: BlocBuilder<ShoppingCartCubit, ShoppingCartModel>(
+                builder: (context, state) {
+              final dateTime = state.bookingDateTime;
+              return Text(
+                dateTime == null
+                    ? 'Select date'
+                    : DateFormat('dd/MM/yyyy  (h a)').format(dateTime),
+                style: dateTime == null
+                    ? AppTextStyles.greyAltText12
+                    : AppTextStyles.primaryPurpleMediumText12,
+              );
+            }),
           ),
         ],
       ),

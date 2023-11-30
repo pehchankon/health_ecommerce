@@ -1,3 +1,4 @@
+import 'package:alemeno_intern/blocs/shopping_cart.cubit.dart';
 import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/screens/book_appointment/widgets/date_pick.widget.dart';
@@ -6,14 +7,11 @@ import 'package:alemeno_intern/textStyles.dart';
 import 'package:alemeno_intern/widgets/custom_button.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class BookAppointmentPage extends StatefulWidget {
-  BookAppointmentPage({
-    super.key,
-    required this.callback,
-  });
-  final Function(DateTime dateTime) callback;
+  BookAppointmentPage({super.key});
 
   @override
   State<BookAppointmentPage> createState() => _BookAppointmentPageState();
@@ -66,6 +64,8 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
   }
 
   Container _bottomBar(BuildContext context) {
+    final shoppingCartCubit = context.read<ShoppingCartCubit>();
+
     return Container(
       height: 7.h,
       padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -81,7 +81,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
                 time!.hour,
                 time!.minute,
               );
-              widget.callback(_dateTime);
+              shoppingCartCubit.addBookingDateTime(_dateTime);
               Navigator.pop(context);
             },
             isDisabled: date == null || time == null,

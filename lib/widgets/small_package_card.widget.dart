@@ -1,4 +1,4 @@
-import 'package:alemeno_intern/blocs/shopping_cart.bloc.dart';
+import 'package:alemeno_intern/blocs/shopping_cart.cubit.dart';
 import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/models/package.model.dart';
@@ -85,7 +85,7 @@ class SmallPackageCard extends StatelessWidget {
                   await Future.delayed(Duration(seconds: 2));
                   print('hello');
                   shoppingCartCubit.addToCart(package);
-                  print(shoppingCartCubit.state.length);
+                  print(shoppingCartCubit.state.packages.length);
                 },
                 buttonTapBehaviour: ButtonTapBehaviour.action,
                 loadingText: 'Adding to cart',

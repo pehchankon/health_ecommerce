@@ -1,7 +1,7 @@
-import 'package:alemeno_intern/blocs/shopping_cart.bloc.dart';
+import 'package:alemeno_intern/blocs/shopping_cart.cubit.dart';
 import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
-import 'package:alemeno_intern/models/package.model.dart';
+import 'package:alemeno_intern/models/shopping_cart.model.dart';
 import 'package:alemeno_intern/screens/shopping_cart/widgets/hard_copy_report_card.widget.dart';
 import 'package:alemeno_intern/screens/shopping_cart/widgets/select_date_card.widget.dart';
 import 'package:alemeno_intern/screens/shopping_cart/widgets/total_cost_card.widget.dart';
@@ -13,14 +13,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 
-class ShoppingCartPage extends StatelessWidget {
+class ShoppingCartPage extends StatefulWidget {
   ShoppingCartPage({super.key});
-  late final List<PackageModel> packages;
 
+  @override
+  State<ShoppingCartPage> createState() => _ShoppingCartPageState();
+}
+
+class _ShoppingCartPageState extends State<ShoppingCartPage> {
   @override
   Widget build(BuildContext context) {
     final shoppingCartCubit = context.read<ShoppingCartCubit>();
-    packages = shoppingCartCubit.state;
+    final packages = shoppingCartCubit.state.packages;
 
     return Scaffold(
       appBar: _appBar(context),
@@ -46,7 +50,7 @@ class ShoppingCartPage extends StatelessWidget {
               SizedBox(height: 2.h),
               SizedBox(
                 height: 10.h,
-                child: SelectDateCard(callback: (dateTime) => print(dateTime)),
+                child: SelectDateCard(),
               ),
               SizedBox(height: 2.h),
               SizedBox(
@@ -71,12 +75,15 @@ class ShoppingCartPage extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 5.w),
       child: Column(
         children: [
-          CustomButton(
-            text: 'Schedule',
-            onTap: () {},
-            isDisabled: true,
-            buttonSize: ButtonSize.large,
-          ),
+          BlocBuilder<ShoppingCartCubit, ShoppingCartModel>(
+              builder: (context, state) {
+            return CustomButton(
+              text: 'Schedule',
+              onTap: () {},
+              isDisabled: state.bookingDateTime == null,
+              buttonSize: ButtonSize.large,
+            );
+          }),
         ],
       ),
     );

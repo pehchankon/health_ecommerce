@@ -1,7 +1,9 @@
+import 'package:alemeno_intern/blocs/shopping_cart.cubit.dart';
 import 'package:alemeno_intern/models/package.model.dart';
 import 'package:alemeno_intern/widgets/generic_card_outline.widget.dart';
 import 'package:alemeno_intern/textStyles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 
 class TotalCostCard extends StatelessWidget {
@@ -14,15 +16,10 @@ class TotalCostCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    num _totalMRP = 0;
-    num _totalDiscount = 0;
-    for (final package in packages) {
-      _totalMRP = _totalMRP + package.price;
-      final discount =
-          package.hasDiscount! ? package.price - package.discountedPrice! : 0;
-      _totalDiscount = _totalDiscount + discount;
-    }
-
+    final shoppingCartCubit = context.read<ShoppingCartCubit>();
+    final _totalCost = shoppingCartCubit.state.totalCost;
+    final _totalDiscountedCost = shoppingCartCubit.state.totalDiscountedCost;
+    final _totalDiscount = _totalCost - _totalDiscountedCost;
     return GenericCardOutline(
       children: [
         Padding(
@@ -33,7 +30,7 @@ class TotalCostCard extends StatelessWidget {
               SizedBox(height: 3.h),
               _costColumnEntry(
                 'M.R.P Total',
-                _totalMRP,
+                _totalCost,
                 AppTextStyles.greyAltText12,
               ),
               SizedBox(height: 1.5.h),
@@ -45,13 +42,13 @@ class TotalCostCard extends StatelessWidget {
               SizedBox(height: 3.h),
               _costColumnEntry(
                 'Amount to be paid',
-                '₹ ${_totalMRP - _totalDiscount}/-',
+                '₹ ${_totalDiscountedCost}/-',
                 AppTextStyles.primaryPurpleBoldText15,
               ),
               SizedBox(height: 5.h),
               _costColumnEntry(
                 'Total savings',
-                '₹ $_totalDiscount/-',
+                '₹ ${_totalDiscount}/-',
                 AppTextStyles.primaryPurpleBoldText15,
                 firstTextStyle: AppTextStyles.secondaryDarkBlueGreyText12,
                 gap: 6.w,

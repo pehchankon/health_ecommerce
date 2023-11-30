@@ -1,4 +1,4 @@
-import 'package:alemeno_intern/blocs/shopping_cart.bloc.dart';
+import 'package:alemeno_intern/blocs/shopping_cart.cubit.dart';
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/screens/home/home.page.dart';
 import 'package:flutter/material.dart';

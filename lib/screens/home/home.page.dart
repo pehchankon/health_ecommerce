@@ -1,7 +1,8 @@
-import 'package:alemeno_intern/blocs/shopping_cart.bloc.dart';
+import 'package:alemeno_intern/blocs/shopping_cart.cubit.dart';
 import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/models/package.model.dart';
+import 'package:alemeno_intern/models/shopping_cart.model.dart';
 import 'package:alemeno_intern/models/test.model.dart';
 import 'package:alemeno_intern/screens/shopping_cart/shopping_cart.page.dart';
 import 'package:alemeno_intern/textStyles.dart';
@@ -120,9 +121,9 @@ class HomePage extends StatelessWidget {
       ),
       centerTitle: true,
       actions: [
-        BlocBuilder<ShoppingCartCubit, List<PackageModel>>(
+        BlocBuilder<ShoppingCartCubit, ShoppingCartModel>(
             builder: (context, state) {
-          return state.length > 0
+          return state.packages.length > 0
               ? Container(
                   alignment: Alignment.center,
                   padding: EdgeInsets.all(3.5.sp),
@@ -131,16 +132,16 @@ class HomePage extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                   child: Text(
-                    state.length.toString(),
+                    state.packages.length.toString(),
                     style: AppTextStyles.primaryPurpleBoldText8,
                   ),
                 )
               : SizedBox();
         }),
-        BlocBuilder<ShoppingCartCubit, List<PackageModel>>(
+        BlocBuilder<ShoppingCartCubit, ShoppingCartModel>(
             builder: (context, state) {
           return GestureDetector(
-            onTap: () => state.length > 0
+            onTap: () => state.packages.length > 0
                 ? Navigator.push(
                     context,
                     MaterialPageRoute(
