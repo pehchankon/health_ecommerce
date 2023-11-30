@@ -88,7 +88,7 @@ class _CustomButtonState extends State<CustomButton> {
       _textStyle = widget.isFilled
           ? AppTextStyles.primaryWhiteBoldText14
           : AppTextStyles.primaryPurpleMediumText14;
-      _padding = 10.sp;
+      _padding = 14.sp;
     }
 
     return GestureDetector(

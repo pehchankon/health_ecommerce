@@ -1,13 +1,13 @@
 import 'package:alemeno_intern/blocs/shopping_cart.bloc.dart';
-import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/models/package.model.dart';
 import 'package:alemeno_intern/models/test.model.dart';
+import 'package:alemeno_intern/screens/shopping_cart/widgets/hard_copy_report_card.widget.dart';
+import 'package:alemeno_intern/screens/shopping_cart/widgets/select_date_card.widget.dart';
+import 'package:alemeno_intern/screens/shopping_cart/widgets/total_cost_card.widget.dart';
 import 'package:alemeno_intern/textStyles.dart';
 import 'package:alemeno_intern/screens/shopping_cart/widgets/cart_package_card.widget.dart';
 import 'package:alemeno_intern/widgets/custom_button.widget.dart';
-import 'package:alemeno_intern/widgets/large_package_card.widget.dart';
-import 'package:alemeno_intern/widgets/small_package_card.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -60,6 +60,20 @@ class ShoppingCartPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 2.h),
+              SizedBox(
+                height: 10.h,
+                child: SelectDateCard(),
+              ),
+              SizedBox(height: 2.h),
+              SizedBox(
+                height: 23.h,
+                child: TotalCostCard(packages: packages),
+              ),
+              SizedBox(height: 2.h),
+              SizedBox(
+                height: 15.h,
+                child: HardCopyReportCard(),
+              ),
             ],
           ),
         ),
@@ -69,7 +83,7 @@ class ShoppingCartPage extends StatelessWidget {
 
   Container _bottomBar() {
     return Container(
-      height: 6.h,
+      height: 7.h,
       padding: EdgeInsets.symmetric(horizontal: 5.w),
       child: Column(
         children: [
@@ -88,7 +102,7 @@ class ShoppingCartPage extends StatelessWidget {
     return AppBar(
       systemOverlayStyle: kSystemUiOverlayStyle,
       title: Text(
-        'My Cart',
+        'My cart',
         style: AppTextStyles.titleBlackMediumText20,
       ),
       centerTitle: false,
