@@ -2,7 +2,6 @@ import 'package:alemeno_intern/blocs/shopping_cart.bloc.dart';
 import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/models/package.model.dart';
-import 'package:alemeno_intern/models/test.model.dart';
 import 'package:alemeno_intern/screens/shopping_cart/widgets/hard_copy_report_card.widget.dart';
 import 'package:alemeno_intern/screens/shopping_cart/widgets/select_date_card.widget.dart';
 import 'package:alemeno_intern/screens/shopping_cart/widgets/total_cost_card.widget.dart';
