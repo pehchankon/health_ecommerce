@@ -1,4 +1,3 @@
-import 'package:alemeno_intern/blocs/shopping_cart.cubit.dart';
 import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/models/shopping_cart.model.dart';
@@ -6,7 +5,6 @@ import 'package:alemeno_intern/textStyles.dart';
 import 'package:alemeno_intern/widgets/custom_button.widget.dart';
 import 'package:alemeno_intern/widgets/generic_card_outline.widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
@@ -22,7 +20,7 @@ class BookingSuccessPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _appBar(context),
-      bottomNavigationBar: _bottomBar(),
+      bottomNavigationBar: _bottomBar(context),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 10.h),
@@ -63,20 +61,17 @@ class BookingSuccessPage extends StatelessWidget {
     );
   }
 
-  Container _bottomBar() {
+  Container _bottomBar(BuildContext context) {
     return Container(
       height: 7.h,
       padding: EdgeInsets.symmetric(horizontal: 5.w),
       child: Column(
         children: [
-          BlocBuilder<ShoppingCartCubit, ShoppingCartModel>(
-              builder: (context, state) {
-            return CustomButton(
-              text: 'Back to home',
-              onTap: () => Navigator.pop(context),
-              buttonSize: ButtonSize.large,
-            );
-          }),
+          CustomButton(
+            text: 'Back to home',
+            onTap: () => Navigator.pop(context),
+            buttonSize: ButtonSize.large,
+          ),
         ],
       ),
     );
