@@ -120,33 +120,40 @@ class HomePage extends StatelessWidget {
       ),
       centerTitle: true,
       actions: [
-        Container(
-          alignment: Alignment.center,
-          padding: EdgeInsets.all(3.5.sp),
-          decoration: BoxDecoration(
-            color: AppColors.secondaryCyanColor,
-            shape: BoxShape.circle,
-          ),
-          child: BlocBuilder<ShoppingCartCubit, List<PackageModel>>(
-              builder: (context, state) {
-            return Text(
-              state.length.toString(),
-              style: AppTextStyles.primaryPurpleBoldText8,
-            );
-          }),
-        ),
-        GestureDetector(
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ShoppingCartPage(),
+        BlocBuilder<ShoppingCartCubit, List<PackageModel>>(
+            builder: (context, state) {
+          return state.length > 0
+              ? Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(3.5.sp),
+                  decoration: BoxDecoration(
+                    color: AppColors.secondaryCyanColor,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Text(
+                    state.length.toString(),
+                    style: AppTextStyles.primaryPurpleBoldText8,
+                  ),
+                )
+              : SizedBox();
+        }),
+        BlocBuilder<ShoppingCartCubit, List<PackageModel>>(
+            builder: (context, state) {
+          return GestureDetector(
+            onTap: () => state.length > 0
+                ? Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ShoppingCartPage(),
+                    ),
+                  )
+                : null,
+            child: Icon(
+              Icons.shopping_cart_rounded,
+              color: AppColors.primaryPurpleColor,
             ),
-          ),
-          child: Icon(
-            Icons.shopping_cart_rounded,
-            color: AppColors.primaryPurpleColor,
-          ),
-        ),
+          );
+        }),
         SizedBox(width: 5.w),
       ],
     );
