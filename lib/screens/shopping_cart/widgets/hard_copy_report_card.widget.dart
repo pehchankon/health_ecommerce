@@ -15,7 +15,7 @@ class HardCopyReportCard extends StatefulWidget {
 
 class _HardCopyReportCardState extends State<HardCopyReportCard> {
   bool _selected = false;
-  _toggle() => setState(() => _selected = true);
+  _toggle() => setState(() => _selected = !_selected);
 
   @override
   Widget build(BuildContext context) {
