@@ -4,7 +4,7 @@ import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/models/package.model.dart';
 import 'package:alemeno_intern/models/test.model.dart';
 import 'package:alemeno_intern/textStyles.dart';
-import 'package:alemeno_intern/widgets/cart_package_card.widget.dart';
+import 'package:alemeno_intern/screens/shopping_cart/widgets/cart_package_card.widget.dart';
 import 'package:alemeno_intern/widgets/custom_button.widget.dart';
 import 'package:alemeno_intern/widgets/large_package_card.widget.dart';
 import 'package:alemeno_intern/widgets/small_package_card.widget.dart';
