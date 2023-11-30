@@ -7,12 +7,13 @@ import 'package:alemeno_intern/screens/home/home.page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await GoogleFonts.pendingFonts([GoogleFonts.inter()]);
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
