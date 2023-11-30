@@ -1,5 +1,5 @@
 import 'package:alemeno_intern/models/package.model.dart';
-import 'apiClient.dart';
+import 'api_client.dart';
 
 class DataRepository {
   final ApiClient apiClient;

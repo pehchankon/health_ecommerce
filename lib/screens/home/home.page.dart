@@ -1,7 +1,7 @@
 import 'package:alemeno_intern/blocs/shopping_cart.cubit.dart';
 import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
-import 'package:alemeno_intern/data/dataRepository.dart';
+import 'package:alemeno_intern/data/data_repository.dart';
 import 'package:alemeno_intern/models/package.model.dart';
 import 'package:alemeno_intern/models/shopping_cart.model.dart';
 import 'package:alemeno_intern/screens/shopping_cart/shopping_cart.page.dart';

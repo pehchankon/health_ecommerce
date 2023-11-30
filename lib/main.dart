@@ -1,7 +1,7 @@
 import 'package:alemeno_intern/blocs/shopping_cart.cubit.dart';
 import 'package:alemeno_intern/constants.dart';
-import 'package:alemeno_intern/data/apiClient.dart';
-import 'package:alemeno_intern/data/dataRepository.dart';
+import 'package:alemeno_intern/data/api_client.dart';
+import 'package:alemeno_intern/data/data_repository.dart';
 import 'package:alemeno_intern/screens/home/home.page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
