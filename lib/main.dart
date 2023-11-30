@@ -1,8 +1,11 @@
 import 'package:alemeno_intern/blocs/shopping_cart.cubit.dart';
 import 'package:alemeno_intern/constants.dart';
+import 'package:alemeno_intern/data/apiClient.dart';
+import 'package:alemeno_intern/data/dataRepository.dart';
 import 'package:alemeno_intern/screens/home/home.page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
@@ -21,12 +24,20 @@ Future main() async {
 
 class MyApp extends StatelessWidget {
   static final String title = 'title';
+  final apiClient = ApiClient('mockBaseURL');
 
   @override
   Widget build(BuildContext context) {
-    return Provider(
-      create: (context) => ShoppingCartCubit(),
-      dispose: (context, cubit) => cubit.close(),
+    return MultiProvider(
+      providers: [
+        Provider(
+          create: (context) => ShoppingCartCubit(),
+          dispose: (context, cubit) => cubit.close(),
+        ),
+        RepositoryProvider(
+          create: (context) => DataRepository(apiClient),
+        ),
+      ],
       child: Sizer(
         builder: (context, orientation, deviceType) {
           return MaterialApp(
