@@ -67,7 +67,6 @@ class SmallPackageCard extends StatelessWidget {
           Expanded(child: SizedBox()),
           BlocBuilder<ShoppingCartCubit, ShoppingCartModel>(
               builder: (context, state) {
-            print('${package.id} ${shoppingCartCubit.packageExistsInCart(package.id)}');
             return CustomButton(
               text: 'Add to cart',
               onTap: () async {
