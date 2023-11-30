@@ -1,6 +1,7 @@
 import 'package:alemeno_intern/blocs/shopping_cart.cubit.dart';
 import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
+import 'package:alemeno_intern/data/notification_client.dart';
 import 'package:alemeno_intern/models/shopping_cart.model.dart';
 import 'package:alemeno_intern/screens/booking_success/booking_success.page.dart';
 import 'package:alemeno_intern/screens/shopping_cart/widgets/hard_copy_report_card.widget.dart';
@@ -12,6 +13,7 @@ import 'package:alemeno_intern/widgets/custom_button.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class ShoppingCartPage extends StatefulWidget {
@@ -25,11 +27,13 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
   @override
   Widget build(BuildContext context) {
     final shoppingCartCubit = context.read<ShoppingCartCubit>();
+    final notificationClient =
+        Provider.of<NotificationClient>(context, listen: false);
     final packages = shoppingCartCubit.state.packages;
 
     return Scaffold(
       appBar: _appBar(context),
-      bottomNavigationBar: _bottomBar(shoppingCartCubit),
+      bottomNavigationBar: _bottomBar(shoppingCartCubit, notificationClient),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -72,7 +76,10 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
     );
   }
 
-  Container _bottomBar(ShoppingCartCubit shoppingCartCubit) {
+  Container _bottomBar(
+    ShoppingCartCubit shoppingCartCubit,
+    NotificationClient notificationClient,
+  ) {
     return Container(
       height: 7.h,
       padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -84,6 +91,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
               text: 'Schedule',
               onTap: () {
                 final orderDetails = shoppingCartCubit.state;
+                shoppingCartCubit.sendNotification(notificationClient);
                 shoppingCartCubit.clearCart();
                 Navigator.pushReplacement(
                   context,

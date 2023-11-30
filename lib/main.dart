@@ -2,6 +2,7 @@ import 'package:alemeno_intern/blocs/shopping_cart.cubit.dart';
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/data/api_client.dart';
 import 'package:alemeno_intern/data/data_repository.dart';
+import 'package:alemeno_intern/data/notification_client.dart';
 import 'package:alemeno_intern/screens/home/home.page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -25,6 +26,7 @@ Future main() async {
 class MyApp extends StatelessWidget {
   static final String title = 'title';
   final apiClient = ApiClient('mockBaseURL');
+  final notificationClient = NotificationClient();
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +38,9 @@ class MyApp extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => DataRepository(apiClient),
+        ),
+        Provider(
+          create: (context) => NotificationClient(),
         ),
       ],
       child: Sizer(

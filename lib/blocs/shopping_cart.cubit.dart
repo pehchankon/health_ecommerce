@@ -1,3 +1,4 @@
+import 'package:alemeno_intern/data/notification_client.dart';
 import 'package:alemeno_intern/models/package.model.dart';
 import 'package:alemeno_intern/models/shopping_cart.model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,5 +59,13 @@ class ShoppingCartCubit extends Cubit<ShoppingCartModel> {
 
   bool packageExistsInCart(int packageId) {
     return state.packagesAdded.contains(packageId);
+  }
+
+  void sendNotification(NotificationClient client) {
+    String message = 'Thank you for purchasing ';
+    for (final package in state.packages) {
+      message += '${package.name}, ';
+    }
+    client.sendNotification('${message.substring(0, message.length - 2)}!');
   }
 }
