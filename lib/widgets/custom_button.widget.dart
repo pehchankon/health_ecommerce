@@ -96,7 +96,7 @@ class _CustomButtonState extends State<CustomButton> {
     }
 
     return GestureDetector(
-      onTap: _onTap,
+      onTap: widget.isDisabled ? null : _onTap,
       child: Container(
         width: double.infinity,
         alignment: Alignment.center,
