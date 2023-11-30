@@ -8,9 +8,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 
 class CartPackageCard extends StatelessWidget {
-  CartPackageCard({super.key, required this.package});
+  CartPackageCard({
+    super.key,
+    required this.packages,
+  });
 
-  final PackageModel package;
+  final List<PackageModel> packages;
 
   @override
   Widget build(BuildContext context) {
@@ -37,48 +40,65 @@ class CartPackageCard extends StatelessWidget {
   }
 
   Padding _body() {
+    final _length = packages.length;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 8.w),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 6.5.h),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                package.name,
-                style: AppTextStyles.secondaryDarkBlueGreySemiBoldText15,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    '₹ ${package.hasDiscount! ? package.discountedPrice : package.price}/-',
-                    style: AppTextStyles.secondaryDarkCyanSemiBoldText16,
-                  ),
-                  package.hasDiscount!
-                      ? Text(
-                          package.price.toString(),
-                          style: AppTextStyles.greyText11.copyWith(
-                            decoration: TextDecoration.lineThrough,
-                          ),
-                        )
-                      : SizedBox(),
-                ],
-              ),
-            ],
-          ),
-          Expanded(child: SizedBox()),
-          CircularCustomButton(text: 'Remove', icon: kDeleteIcon),
-          SizedBox(height: 1.h),
-          CircularCustomButton(
-            text: 'Upload prescription (optional)',
-            icon: kUploadIcon,
-          ),
-          SizedBox(height: 1.5.h),
-        ],
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: _length,
+        itemBuilder: (context, index) {
+          final package = packages[index];
+          return SizedBox(
+            height: (index == 0 ? 22.h : 17.h) +
+                (_length > 0 ? 3.h * (_length - 1) : 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: index == 0 ? 6.5.h : 1.5.h),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      package.name,
+                      style: AppTextStyles.secondaryDarkBlueGreySemiBoldText15,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          '₹ ${package.hasDiscount! ? package.discountedPrice : package.price}/-',
+                          style: AppTextStyles.secondaryDarkCyanSemiBoldText16,
+                        ),
+                        package.hasDiscount!
+                            ? Text(
+                                package.price.toString(),
+                                style: AppTextStyles.greyText11.copyWith(
+                                  decoration: TextDecoration.lineThrough,
+                                ),
+                              )
+                            : SizedBox(),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(height: 1.h),
+                CircularCustomButton(text: 'Remove', icon: kDeleteIcon),
+                SizedBox(height: 1.h),
+                CircularCustomButton(
+                  text: 'Upload prescription (optional)',
+                  icon: kUploadIcon,
+                ),
+                index != _length - 1
+                    ? Padding(
+                        padding: EdgeInsets.only(top: 2.h),
+                        child: Divider(thickness: 1),
+                      )
+                    : SizedBox(),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

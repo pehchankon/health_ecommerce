@@ -43,9 +43,10 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
               ),
               SizedBox(height: 1.h),
               SizedBox(
-                height: 22.h,
+                height: (5.h + 17.h * packages.length) +
+                    (packages.length > 0 ? 3.h * (packages.length - 1) : 0),
                 child: CartPackageCard(
-                  package: packages[0],
+                  packages: packages,
                 ),
               ),
               SizedBox(height: 2.h),
@@ -91,7 +92,6 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
                     ),
                   ),
                 );
-                
               },
               isDisabled: state.bookingDateTime == null,
               buttonSize: ButtonSize.large,
