@@ -52,7 +52,7 @@ class BookingSuccessPage extends StatelessWidget {
           ),
           SizedBox(height: 2.h),
           Text(
-            DateFormat('d MMM yyyy | h a')
+            DateFormat('d MMM yyyy  |  h a')
                 .format(orderDetails.bookingDateTime!),
             style: AppTextStyles.greyAltText16,
             textAlign: TextAlign.center,
