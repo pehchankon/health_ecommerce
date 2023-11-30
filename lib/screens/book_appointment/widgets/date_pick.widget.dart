@@ -1,5 +1,5 @@
 import 'package:alemeno_intern/colors.dart';
-import 'package:alemeno_intern/textStyles.dart';
+import 'package:alemeno_intern/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
@@ -20,13 +20,13 @@ class _DatePickState extends State<DatePick> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(9),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
             blurRadius: 24,
           ),
         ],
@@ -45,23 +45,23 @@ class _DatePickState extends State<DatePick> {
           weekendStyle: AppTextStyles.greyAltMediumText2_12,
         ),
         headerStyle: HeaderStyle(
-          headerPadding: EdgeInsets.symmetric(vertical: 10),
-          leftChevronPadding: EdgeInsets.all(0),
-          leftChevronIcon: Icon(
+          headerPadding: const EdgeInsets.symmetric(vertical: 10),
+          leftChevronPadding: const EdgeInsets.all(0),
+          leftChevronIcon: const Icon(
             Icons.arrow_back_ios_new,
             color: AppColors.blueColor,
             size: 20,
           ),
-          rightChevronIcon: Icon(
+          rightChevronIcon: const Icon(
             Icons.arrow_forward_ios,
             color: AppColors.blueColor,
             size: 20,
           ),
-          rightChevronPadding: EdgeInsets.all(0),
+          rightChevronPadding: const EdgeInsets.all(0),
           titleCentered: true,
           titleTextStyle: AppTextStyles.titleBlackMediumText16,
         ),
-        availableCalendarFormats: {CalendarFormat.month: 'Month'},
+        availableCalendarFormats: const {CalendarFormat.month: 'Month'},
         selectedDayPredicate: (day) {
           return isSameDay(_selectedDay, day);
         },
@@ -74,8 +74,8 @@ class _DatePickState extends State<DatePick> {
         },
         startingDayOfWeek: StartingDayOfWeek.sunday,
         calendarStyle: CalendarStyle(
-          todayDecoration: BoxDecoration(shape: BoxShape.circle),
-          selectedDecoration: BoxDecoration(
+          todayDecoration: const BoxDecoration(shape: BoxShape.circle),
+          selectedDecoration: const BoxDecoration(
             color: AppColors.primaryPurpleColor,
             shape: BoxShape.circle,
           ),
@@ -87,7 +87,7 @@ class _DatePickState extends State<DatePick> {
           holidayTextStyle: dateStyle,
           weekendTextStyle: dateStyle,
           selectedTextStyle: dateStyle.copyWith(color: Colors.white),
-          cellMargin: EdgeInsets.all(4),
+          cellMargin: const EdgeInsets.all(4),
           outsideDaysVisible: false,
         ),
       ),

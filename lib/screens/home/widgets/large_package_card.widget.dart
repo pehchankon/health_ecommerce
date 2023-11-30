@@ -1,6 +1,6 @@
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/models/package.model.dart';
-import 'package:alemeno_intern/textStyles.dart';
+import 'package:alemeno_intern/text_styles.dart';
 import 'package:alemeno_intern/widgets/custom_button.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,7 +20,7 @@ class LargePackageCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6),
         border: Border.all(
-          color: Color(0xFFD3D3D3),
+          color: const Color(0xFFD3D3D3),
           width: 0.5.sp,
         ),
       ),
@@ -56,7 +56,7 @@ class LargePackageCard extends StatelessWidget {
                 ),
                 ListView.builder(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: 2,
                   itemBuilder: (context, index) => Text(
                     '  • ${package.tests[index].name}',
@@ -71,7 +71,7 @@ class LargePackageCard extends StatelessWidget {
                           decoration: TextDecoration.underline,
                         ),
                       )
-                    : SizedBox(),
+                    : const SizedBox(),
                 SizedBox(height: 2.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

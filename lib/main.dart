@@ -24,9 +24,11 @@ Future main() async {
 }
 
 class MyApp extends StatelessWidget {
-  static final String title = 'title';
+  static const String title = 'title';
   final apiClient = ApiClient('mockBaseURL');
   final notificationClient = NotificationClient();
+
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -52,12 +54,12 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primaryColor: Colors.black,
               scaffoldBackgroundColor: Colors.white,
-              appBarTheme: AppBarTheme(
+              appBarTheme: const AppBarTheme(
                 backgroundColor: Colors.transparent,
                 elevation: 0,
               ),
             ),
-            home: HomePage(),
+            home: const HomePage(),
           );
         },
       ),

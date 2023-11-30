@@ -15,12 +15,12 @@ class ShoppingCartCubit extends Cubit<ShoppingCartModel> {
         ));
 
   ShoppingCartModel _addPackageCost(PackageModel package) {
-    final _totalCost = state.totalCost + package.price;
-    final _totalDiscountedCost = state.totalDiscountedCost +
+    final totalCost = state.totalCost + package.price;
+    final totalDiscountedCost = state.totalDiscountedCost +
         (package.hasDiscount! ? package.discountedPrice! : 0);
     return state.copyWith(
-      totalCost: _totalCost,
-      totalDiscountedCost: _totalDiscountedCost,
+      totalCost: totalCost,
+      totalDiscountedCost: totalDiscountedCost,
     );
   }
 
@@ -41,8 +41,8 @@ class ShoppingCartCubit extends Cubit<ShoppingCartModel> {
     emit(updatedState);
   }
 
-  void updateHasHardCopy(bool _hasHardCopy) {
-    final updatedState = state.copyWith(hasHardCopy: _hasHardCopy);
+  void updateHasHardCopy(bool hasHardCopy) {
+    final updatedState = state.copyWith(hasHardCopy: hasHardCopy);
     emit(updatedState);
   }
 

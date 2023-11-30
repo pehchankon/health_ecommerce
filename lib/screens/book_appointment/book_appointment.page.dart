@@ -3,7 +3,7 @@ import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/screens/book_appointment/widgets/date_pick.widget.dart';
 import 'package:alemeno_intern/screens/book_appointment/widgets/time_pick.widget.dart';
-import 'package:alemeno_intern/textStyles.dart';
+import 'package:alemeno_intern/text_styles.dart';
 import 'package:alemeno_intern/widgets/custom_button.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class BookAppointmentPage extends StatefulWidget {
-  BookAppointmentPage({super.key});
+  const BookAppointmentPage({super.key});
 
   @override
   State<BookAppointmentPage> createState() => _BookAppointmentPageState();
@@ -74,14 +74,14 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
           CustomButton(
             text: 'Confirm',
             onTap: () {
-              final _dateTime = DateTime(
+              final dateTime = DateTime(
                 date!.year,
                 date!.month,
                 date!.day,
                 time!.hour,
                 time!.minute,
               );
-              shoppingCartCubit.addBookingDateTime(_dateTime);
+              shoppingCartCubit.addBookingDateTime(dateTime);
               Navigator.pop(context);
             },
             isDisabled: date == null || time == null,
@@ -111,7 +111,7 @@ class _BookAppointmentPageState extends State<BookAppointmentPage> {
       actions: [
         IconButton(
           onPressed: () => {},
-          icon: Icon(
+          icon: const Icon(
             Icons.more_vert,
             color: AppColors.primaryPurpleColor,
           ),

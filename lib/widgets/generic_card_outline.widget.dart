@@ -16,7 +16,7 @@ class GenericCardOutline extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
             border: Border.all(
-              color: Color(0xFFD3D3D3),
+              color: const Color(0xFFD3D3D3),
               width: 0.5.sp,
             ),
           ),

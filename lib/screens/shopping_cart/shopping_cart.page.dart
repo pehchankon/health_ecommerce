@@ -7,7 +7,7 @@ import 'package:alemeno_intern/screens/booking_success/booking_success.page.dart
 import 'package:alemeno_intern/screens/shopping_cart/widgets/hard_copy_report_card.widget.dart';
 import 'package:alemeno_intern/screens/shopping_cart/widgets/select_date_card.widget.dart';
 import 'package:alemeno_intern/screens/shopping_cart/widgets/total_cost_card.widget.dart';
-import 'package:alemeno_intern/textStyles.dart';
+import 'package:alemeno_intern/text_styles.dart';
 import 'package:alemeno_intern/screens/shopping_cart/widgets/cart_package_card.widget.dart';
 import 'package:alemeno_intern/widgets/custom_button.widget.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class ShoppingCartPage extends StatefulWidget {
-  ShoppingCartPage({super.key});
+  const ShoppingCartPage({super.key});
 
   @override
   State<ShoppingCartPage> createState() => _ShoppingCartPageState();
@@ -48,7 +48,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
               SizedBox(height: 1.h),
               SizedBox(
                 height: (5.h + 18.h * packages.length) +
-                    (packages.length > 0 ? 3.h * (packages.length - 1) : 0),
+                    (packages.isNotEmpty ? 3.h * (packages.length - 1) : 0),
                 child: CartPackageCard(
                   packages: packages,
                 ),
@@ -56,7 +56,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
               SizedBox(height: 2.h),
               SizedBox(
                 height: 10.h,
-                child: SelectDateCard(),
+                child: const SelectDateCard(),
               ),
               SizedBox(height: 2.h),
               SizedBox(
@@ -66,7 +66,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
               SizedBox(height: 2.h),
               SizedBox(
                 height: 15.h,
-                child: HardCopyReportCard(),
+                child: const HardCopyReportCard(),
               ),
               SizedBox(height: 4.h),
             ],
@@ -130,7 +130,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
       actions: [
         IconButton(
           onPressed: () => {},
-          icon: Icon(
+          icon: const Icon(
             Icons.more_vert,
             color: AppColors.primaryPurpleColor,
           ),

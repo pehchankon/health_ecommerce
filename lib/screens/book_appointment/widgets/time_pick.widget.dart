@@ -1,5 +1,5 @@
 import 'package:alemeno_intern/colors.dart';
-import 'package:alemeno_intern/textStyles.dart';
+import 'package:alemeno_intern/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
@@ -27,13 +27,13 @@ class _TimePickState extends State<TimePick> {
 
   @override
   Widget build(BuildContext context) {
-    DateTime _dateTime = DateTime(1, 1, 1, 8);
+    DateTime dateTime = DateTime(1, 1, 1, 8);
     for (int i = 0; i < timeSlotsCount; i++) {
-      timeList.add(_dateTime.add(Duration(hours: i)));
+      timeList.add(dateTime.add(Duration(hours: i)));
     }
 
     return GridView.builder(
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,

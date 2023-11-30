@@ -18,7 +18,7 @@ class NotificationClient {
   _init() async {
     print('gfggfg');
     _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-    final InitializationSettings initializationSettings =
+    const InitializationSettings initializationSettings =
         InitializationSettings(
             android: AndroidInitializationSettings('app_icon'));
     await _flutterLocalNotificationsPlugin.initialize(initializationSettings);

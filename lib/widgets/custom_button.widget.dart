@@ -1,5 +1,5 @@
 import 'package:alemeno_intern/colors.dart';
-import 'package:alemeno_intern/textStyles.dart';
+import 'package:alemeno_intern/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -57,46 +57,46 @@ class _CustomButtonState extends State<CustomButton> {
 
   @override
   Widget build(BuildContext context) {
-    late final String _text;
-    late final Color _buttonColor;
-    late final double _padding;
-    late final TextStyle _textStyle;
-    late final double _borderRadius;
+    late final String text;
+    late final Color buttonColor;
+    late final double padding;
+    late final TextStyle textStyle;
+    late final double borderRadius;
 
     isFinished = widget.isFinished ?? isFinished;
 
     if (widget.isDisabled) {
-      _text = widget.text;
-      _buttonColor = AppColors.lighGreyColor;
+      text = widget.text;
+      buttonColor = AppColors.lighGreyColor;
     } else if (isFinished) {
-      _text = widget.finishedText ?? widget.text;
-      _buttonColor = AppColors.secondaryCyanColor;
+      text = widget.finishedText ?? widget.text;
+      buttonColor = AppColors.secondaryCyanColor;
     } else if (isLoading) {
-      _text = widget.loadingText ?? widget.text;
-      _buttonColor = AppColors.lighGreyColor;
+      text = widget.loadingText ?? widget.text;
+      buttonColor = AppColors.lighGreyColor;
     } else {
-      _text = widget.text;
-      _buttonColor = AppColors.primaryPurpleColor;
+      text = widget.text;
+      buttonColor = AppColors.primaryPurpleColor;
     }
 
     if (widget.buttonSize == ButtonSize.small) {
-      _textStyle = widget.isFilled
+      textStyle = widget.isFilled
           ? AppTextStyles.primaryWhiteBoldText8
           : AppTextStyles.primaryPurpleMediumText8;
-      _padding = 5.sp;
-      _borderRadius = 5;
+      padding = 5.sp;
+      borderRadius = 5;
     } else if (widget.buttonSize == ButtonSize.medium) {
-      _textStyle = widget.isFilled
+      textStyle = widget.isFilled
           ? AppTextStyles.primaryWhiteBoldText12
           : AppTextStyles.primaryPurpleMediumText12;
-      _padding = 8.sp;
-      _borderRadius = 5;
+      padding = 8.sp;
+      borderRadius = 5;
     } else if (widget.buttonSize == ButtonSize.large) {
-      _textStyle = widget.isFilled
+      textStyle = widget.isFilled
           ? AppTextStyles.primaryWhiteBoldText14
           : AppTextStyles.primaryPurpleMediumText14;
-      _padding = 14.sp;
-      _borderRadius = 10;
+      padding = 14.sp;
+      borderRadius = 10;
     }
 
     return GestureDetector(
@@ -104,19 +104,19 @@ class _CustomButtonState extends State<CustomButton> {
       child: Container(
         width: double.infinity,
         alignment: Alignment.center,
-        padding: EdgeInsets.all(_padding),
+        padding: EdgeInsets.all(padding),
         decoration: BoxDecoration(
-          color: widget.isFilled ? _buttonColor : Colors.transparent,
-          borderRadius: BorderRadius.circular(_borderRadius),
+          color: widget.isFilled ? buttonColor : Colors.transparent,
+          borderRadius: BorderRadius.circular(borderRadius),
           border: Border.all(
             color:
-                widget.isFilled ? _buttonColor : AppColors.primaryPurpleColor,
+                widget.isFilled ? buttonColor : AppColors.primaryPurpleColor,
             width: 0.5.sp,
           ),
         ),
         child: Text(
-          _text,
-          style: _textStyle,
+          text,
+          style: textStyle,
         ),
       ),
     );

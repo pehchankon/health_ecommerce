@@ -5,7 +5,7 @@ import 'package:alemeno_intern/data/data_repository.dart';
 import 'package:alemeno_intern/models/package.model.dart';
 import 'package:alemeno_intern/models/shopping_cart.model.dart';
 import 'package:alemeno_intern/screens/shopping_cart/shopping_cart.page.dart';
-import 'package:alemeno_intern/textStyles.dart';
+import 'package:alemeno_intern/text_styles.dart';
 import 'package:alemeno_intern/screens/home/widgets/large_package_card.widget.dart';
 import 'package:alemeno_intern/screens/home/widgets/small_package_card.widget.dart';
 import 'package:alemeno_intern/widgets/loader.widget.dart';
@@ -14,7 +14,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -23,7 +23,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late final List<PackageModel> packages;
   late final DataRepository dataRepository;
-  late final package;
+  late final PackageModel package;
   bool isLoading = true;
 
   @override
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   _init() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     packages = await dataRepository.fetchAllLabTests();
     package = (await dataRepository.fetchAllPackages())[0];
     setState(() => isLoading = false);
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: _appBar(shoppingCartCubit, context),
       body: isLoading
-          ? Loader()
+          ? const Loader()
           : SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -61,13 +61,13 @@ class _HomePageState extends State<HomePage> {
                           'Popular lab tests',
                           style: AppTextStyles.primaryPurpleMediumText20,
                         ),
-                        Expanded(child: SizedBox()),
+                        const Expanded(child: SizedBox()),
                         _viewMoreButton(),
                         SizedBox(width: 1.w),
                         Icon(
                           Icons.arrow_forward_rounded,
                           size: 11.5.sp,
-                          color: Color(0xFF10217D),
+                          color: const Color(0xFF10217D),
                         ),
                       ],
                     ),
@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: EdgeInsets.all(3.w),
                       child: GridView.builder(
-                        physics: BouncingScrollPhysics(),
+                        physics: const BouncingScrollPhysics(),
                         shrinkWrap: true,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
@@ -132,11 +132,11 @@ class _HomePageState extends State<HomePage> {
       actions: [
         BlocBuilder<ShoppingCartCubit, ShoppingCartModel>(
             builder: (context, state) {
-          return state.packages.length > 0
+          return state.packages.isNotEmpty
               ? Container(
                   alignment: Alignment.center,
                   padding: EdgeInsets.all(3.5.sp),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: AppColors.secondaryCyanColor,
                     shape: BoxShape.circle,
                   ),
@@ -145,20 +145,20 @@ class _HomePageState extends State<HomePage> {
                     style: AppTextStyles.primaryPurpleBoldText8,
                   ),
                 )
-              : SizedBox();
+              : const SizedBox();
         }),
         BlocBuilder<ShoppingCartCubit, ShoppingCartModel>(
             builder: (context, state) {
           return GestureDetector(
-            onTap: () => state.packages.length > 0
+            onTap: () => state.packages.isNotEmpty
                 ? Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ShoppingCartPage(),
+                      builder: (context) => const ShoppingCartPage(),
                     ),
                   )
                 : null,
-            child: Icon(
+            child: const Icon(
               Icons.shopping_cart_rounded,
               color: AppColors.primaryPurpleColor,
             ),

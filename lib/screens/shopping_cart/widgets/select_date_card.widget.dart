@@ -3,7 +3,7 @@ import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/models/shopping_cart.model.dart';
 import 'package:alemeno_intern/screens/book_appointment/book_appointment.page.dart';
 import 'package:alemeno_intern/widgets/generic_card_outline.widget.dart';
-import 'package:alemeno_intern/textStyles.dart';
+import 'package:alemeno_intern/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,7 +11,7 @@ import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 
 class SelectDateCard extends StatelessWidget {
-  SelectDateCard({super.key});
+  const SelectDateCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class SelectDateCard extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => BookAppointmentPage(),
+          builder: (context) => const BookAppointmentPage(),
         ),
       ),
       child: GenericCardOutline(

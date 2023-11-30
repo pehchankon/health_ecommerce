@@ -1,7 +1,7 @@
 import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/models/shopping_cart.model.dart';
-import 'package:alemeno_intern/textStyles.dart';
+import 'package:alemeno_intern/text_styles.dart';
 import 'package:alemeno_intern/widgets/custom_button.widget.dart';
 import 'package:alemeno_intern/widgets/generic_card_outline.widget.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 
 class BookingSuccessPage extends StatelessWidget {
-  BookingSuccessPage({
+  const BookingSuccessPage({
     super.key,
     required this.orderDetails,
   });
@@ -42,7 +42,7 @@ class BookingSuccessPage extends StatelessWidget {
         children: [
           SizedBox(height: 5.h),
           SvgPicture.asset(kScheduleSuccessIcon),
-          Expanded(child: SizedBox()),
+          const Expanded(child: SizedBox()),
           Text(
             'Lab tests have been scheduled successfully, You will receive a mail of the same.',
             style: AppTextStyles.secondaryDarkBlueGreyText18,
@@ -96,7 +96,7 @@ class BookingSuccessPage extends StatelessWidget {
       actions: [
         IconButton(
           onPressed: () => {},
-          icon: Icon(
+          icon: const Icon(
             Icons.more_vert,
             color: AppColors.primaryPurpleColor,
           ),

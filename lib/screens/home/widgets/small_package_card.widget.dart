@@ -3,7 +3,7 @@ import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/models/package.model.dart';
 import 'package:alemeno_intern/models/shopping_cart.model.dart';
-import 'package:alemeno_intern/textStyles.dart';
+import 'package:alemeno_intern/text_styles.dart';
 import 'package:alemeno_intern/widgets/custom_button.widget.dart';
 import 'package:alemeno_intern/widgets/generic_card_outline.widget.dart';
 import 'package:flutter/material.dart';
@@ -61,16 +61,16 @@ class SmallPackageCard extends StatelessWidget {
                         decoration: TextDecoration.lineThrough,
                       ),
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
             ],
           ),
-          Expanded(child: SizedBox()),
+          const Expanded(child: SizedBox()),
           BlocBuilder<ShoppingCartCubit, ShoppingCartModel>(
               builder: (context, state) {
             return CustomButton(
               text: 'Add to cart',
               onTap: () async {
-                await Future.delayed(Duration(seconds: 1));
+                await Future.delayed(const Duration(seconds: 1));
                 shoppingCartCubit.addToCart(package);
               },
               buttonTapBehaviour: ButtonTapBehaviour.action,
@@ -100,7 +100,7 @@ class SmallPackageCard extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         color: AppColors.primaryPurpleColor.withOpacity(0.8),
-        borderRadius: BorderRadius.vertical(
+        borderRadius: const BorderRadius.vertical(
           top: Radius.circular(5),
         ),
       ),

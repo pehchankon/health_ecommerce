@@ -2,13 +2,13 @@ import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/models/package.model.dart';
 import 'package:alemeno_intern/widgets/generic_card_outline.widget.dart';
-import 'package:alemeno_intern/textStyles.dart';
+import 'package:alemeno_intern/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 
 class CartPackageCard extends StatelessWidget {
-  CartPackageCard({
+  const CartPackageCard({
     super.key,
     required this.packages,
   });
@@ -25,7 +25,7 @@ class CartPackageCard extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             color: AppColors.primaryPurpleColor.withOpacity(0.8),
-            borderRadius: BorderRadius.vertical(
+            borderRadius: const BorderRadius.vertical(
               top: Radius.circular(5),
             ),
           ),
@@ -40,17 +40,17 @@ class CartPackageCard extends StatelessWidget {
   }
 
   Padding _body() {
-    final _length = packages.length;
+    final length = packages.length;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 8.w),
       child: ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: _length,
+        itemCount: length,
         itemBuilder: (context, index) {
           final package = packages[index];
           return SizedBox(
-            height: (index == 0 ? 23.h : 18.h) + (_length > 0 ? 3.h : 0),
+            height: (index == 0 ? 23.h : 18.h) + (length > 0 ? 3.h : 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -77,24 +77,24 @@ class CartPackageCard extends StatelessWidget {
                                   decoration: TextDecoration.lineThrough,
                                 ),
                               )
-                            : SizedBox(),
+                            : const SizedBox(),
                       ],
                     ),
                   ],
                 ),
                 SizedBox(height: 1.h),
-                CircularCustomButton(text: 'Remove', icon: kDeleteIcon),
+                const CircularCustomButton(text: 'Remove', icon: kDeleteIcon),
                 SizedBox(height: 1.h),
-                CircularCustomButton(
+                const CircularCustomButton(
                   text: 'Upload prescription (optional)',
                   icon: kUploadIcon,
                 ),
-                index != _length - 1
+                index != length - 1
                     ? Padding(
                         padding: EdgeInsets.only(top: 3.h),
-                        child: Divider(thickness: 1),
+                        child: const Divider(thickness: 1),
                       )
-                    : SizedBox(),
+                    : const SizedBox(),
               ],
             ),
           );
