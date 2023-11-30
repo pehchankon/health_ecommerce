@@ -10,15 +10,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 
-class SelectDateCard extends StatefulWidget {
+class SelectDateCard extends StatelessWidget {
   SelectDateCard({super.key});
-
-  @override
-  State<SelectDateCard> createState() => _SelectDateCardState();
-}
-
-class _SelectDateCardState extends State<SelectDateCard> {
-  String? text;
 
   @override
   Widget build(BuildContext context) {
