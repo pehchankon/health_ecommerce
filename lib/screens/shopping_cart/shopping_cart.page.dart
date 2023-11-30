@@ -43,7 +43,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
               ),
               SizedBox(height: 1.h),
               SizedBox(
-                height: (5.h + 17.h * packages.length) +
+                height: (5.h + 18.h * packages.length) +
                     (packages.length > 0 ? 3.h * (packages.length - 1) : 0),
                 child: CartPackageCard(
                   packages: packages,

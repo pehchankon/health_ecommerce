@@ -44,13 +44,13 @@ class CartPackageCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 8.w),
       child: ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         itemCount: _length,
         itemBuilder: (context, index) {
           final package = packages[index];
           return SizedBox(
-            height: (index == 0 ? 22.h : 17.h) +
-                (_length > 0 ? 3.h * (_length - 1) : 0),
+            height: (index == 0 ? 23.h : 18.h) + (_length > 0 ? 3.h : 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -91,7 +91,7 @@ class CartPackageCard extends StatelessWidget {
                 ),
                 index != _length - 1
                     ? Padding(
-                        padding: EdgeInsets.only(top: 2.h),
+                        padding: EdgeInsets.only(top: 3.h),
                         child: Divider(thickness: 1),
                       )
                     : SizedBox(),
