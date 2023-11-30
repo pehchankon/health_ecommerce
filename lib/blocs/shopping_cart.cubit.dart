@@ -25,9 +25,13 @@ class ShoppingCartCubit extends Cubit<ShoppingCartModel> {
 
   void addToCart(PackageModel package) {
     final updatedPackages = List<PackageModel>.from(state.packages);
+    final updatedPackagesAdded = Set<int>.from(state.packagesAdded);
     updatedPackages.add(package);
-    final updatedState =
-        _addPackageCost(package).copyWith(packages: updatedPackages);
+    updatedPackagesAdded.add(package.id);
+    final updatedState = _addPackageCost(package).copyWith(
+      packages: updatedPackages,
+      packagesAdded: updatedPackagesAdded,
+    );
     emit(updatedState);
   }
 
@@ -50,5 +54,9 @@ class ShoppingCartCubit extends Cubit<ShoppingCartModel> {
       totalCost: 0,
       totalDiscountedCost: 0,
     ));
+  }
+
+  bool packageExistsInCart(int packageId) {
+    return state.packagesAdded.contains(packageId);
   }
 }

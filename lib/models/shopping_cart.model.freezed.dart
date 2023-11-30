@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ShoppingCartModel {
   int get id => throw _privateConstructorUsedError;
   List<PackageModel> get packages => throw _privateConstructorUsedError;
+  Set<int> get packagesAdded => throw _privateConstructorUsedError;
   DateTime? get bookingDateTime => throw _privateConstructorUsedError;
   bool get hasHardCopy => throw _privateConstructorUsedError;
   num get totalCost => throw _privateConstructorUsedError;
@@ -37,6 +38,7 @@ abstract class $ShoppingCartModelCopyWith<$Res> {
   $Res call(
       {int id,
       List<PackageModel> packages,
+      Set<int> packagesAdded,
       DateTime? bookingDateTime,
       bool hasHardCopy,
       num totalCost,
@@ -58,6 +60,7 @@ class _$ShoppingCartModelCopyWithImpl<$Res, $Val extends ShoppingCartModel>
   $Res call({
     Object? id = null,
     Object? packages = null,
+    Object? packagesAdded = null,
     Object? bookingDateTime = freezed,
     Object? hasHardCopy = null,
     Object? totalCost = null,
@@ -72,6 +75,10 @@ class _$ShoppingCartModelCopyWithImpl<$Res, $Val extends ShoppingCartModel>
           ? _value.packages
           : packages // ignore: cast_nullable_to_non_nullable
               as List<PackageModel>,
+      packagesAdded: null == packagesAdded
+          ? _value.packagesAdded
+          : packagesAdded // ignore: cast_nullable_to_non_nullable
+              as Set<int>,
       bookingDateTime: freezed == bookingDateTime
           ? _value.bookingDateTime
           : bookingDateTime // ignore: cast_nullable_to_non_nullable
@@ -103,6 +110,7 @@ abstract class _$$ShoppingCartModelImplCopyWith<$Res>
   $Res call(
       {int id,
       List<PackageModel> packages,
+      Set<int> packagesAdded,
       DateTime? bookingDateTime,
       bool hasHardCopy,
       num totalCost,
@@ -122,6 +130,7 @@ class __$$ShoppingCartModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? packages = null,
+    Object? packagesAdded = null,
     Object? bookingDateTime = freezed,
     Object? hasHardCopy = null,
     Object? totalCost = null,
@@ -136,6 +145,10 @@ class __$$ShoppingCartModelImplCopyWithImpl<$Res>
           ? _value._packages
           : packages // ignore: cast_nullable_to_non_nullable
               as List<PackageModel>,
+      packagesAdded: null == packagesAdded
+          ? _value._packagesAdded
+          : packagesAdded // ignore: cast_nullable_to_non_nullable
+              as Set<int>,
       bookingDateTime: freezed == bookingDateTime
           ? _value.bookingDateTime
           : bookingDateTime // ignore: cast_nullable_to_non_nullable
@@ -162,11 +175,13 @@ class _$ShoppingCartModelImpl implements _ShoppingCartModel {
   _$ShoppingCartModelImpl(
       {required this.id,
       required final List<PackageModel> packages,
+      final Set<int> packagesAdded = const {},
       this.bookingDateTime,
       required this.hasHardCopy,
       required this.totalCost,
       required this.totalDiscountedCost})
-      : _packages = packages;
+      : _packages = packages,
+        _packagesAdded = packagesAdded;
 
   @override
   final int id;
@@ -176,6 +191,15 @@ class _$ShoppingCartModelImpl implements _ShoppingCartModel {
     if (_packages is EqualUnmodifiableListView) return _packages;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_packages);
+  }
+
+  final Set<int> _packagesAdded;
+  @override
+  @JsonKey()
+  Set<int> get packagesAdded {
+    if (_packagesAdded is EqualUnmodifiableSetView) return _packagesAdded;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(_packagesAdded);
   }
 
   @override
@@ -189,7 +213,7 @@ class _$ShoppingCartModelImpl implements _ShoppingCartModel {
 
   @override
   String toString() {
-    return 'ShoppingCartModel(id: $id, packages: $packages, bookingDateTime: $bookingDateTime, hasHardCopy: $hasHardCopy, totalCost: $totalCost, totalDiscountedCost: $totalDiscountedCost)';
+    return 'ShoppingCartModel(id: $id, packages: $packages, packagesAdded: $packagesAdded, bookingDateTime: $bookingDateTime, hasHardCopy: $hasHardCopy, totalCost: $totalCost, totalDiscountedCost: $totalDiscountedCost)';
   }
 
   @override
@@ -199,6 +223,8 @@ class _$ShoppingCartModelImpl implements _ShoppingCartModel {
             other is _$ShoppingCartModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             const DeepCollectionEquality().equals(other._packages, _packages) &&
+            const DeepCollectionEquality()
+                .equals(other._packagesAdded, _packagesAdded) &&
             (identical(other.bookingDateTime, bookingDateTime) ||
                 other.bookingDateTime == bookingDateTime) &&
             (identical(other.hasHardCopy, hasHardCopy) ||
@@ -214,6 +240,7 @@ class _$ShoppingCartModelImpl implements _ShoppingCartModel {
       runtimeType,
       id,
       const DeepCollectionEquality().hash(_packages),
+      const DeepCollectionEquality().hash(_packagesAdded),
       bookingDateTime,
       hasHardCopy,
       totalCost,
@@ -231,6 +258,7 @@ abstract class _ShoppingCartModel implements ShoppingCartModel {
   factory _ShoppingCartModel(
       {required final int id,
       required final List<PackageModel> packages,
+      final Set<int> packagesAdded,
       final DateTime? bookingDateTime,
       required final bool hasHardCopy,
       required final num totalCost,
@@ -240,6 +268,8 @@ abstract class _ShoppingCartModel implements ShoppingCartModel {
   int get id;
   @override
   List<PackageModel> get packages;
+  @override
+  Set<int> get packagesAdded;
   @override
   DateTime? get bookingDateTime;
   @override

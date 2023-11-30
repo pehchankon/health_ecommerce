@@ -19,6 +19,7 @@ class CustomButton extends StatefulWidget {
     this.isOneTimeAction = false,
     this.buttonSize = ButtonSize.small,
     this.isDisabled = false,
+    this.isFinished,
   });
 
   final ButtonTapBehaviour buttonTapBehaviour;
@@ -30,6 +31,7 @@ class CustomButton extends StatefulWidget {
   final String? finishedText;
   final ButtonSize buttonSize;
   final bool isDisabled;
+  final bool? isFinished;
 
   @override
   State<CustomButton> createState() => _CustomButtonState();
@@ -40,7 +42,7 @@ class _CustomButtonState extends State<CustomButton> {
   bool isFinished = false;
 
   _onTap() async {
-    if (isFinished) return;
+    if (isFinished || widget.isDisabled) return;
     if (widget.buttonTapBehaviour == ButtonTapBehaviour.action) {
       setState(() => isLoading = true);
     }
@@ -60,6 +62,8 @@ class _CustomButtonState extends State<CustomButton> {
     late final double _padding;
     late final TextStyle _textStyle;
     late final double _borderRadius;
+
+    isFinished = widget.isFinished ?? isFinished;
 
     if (widget.isDisabled) {
       _text = widget.text;
@@ -96,7 +100,7 @@ class _CustomButtonState extends State<CustomButton> {
     }
 
     return GestureDetector(
-      onTap: widget.isDisabled ? null : _onTap,
+      onTap: _onTap,
       child: Container(
         width: double.infinity,
         alignment: Alignment.center,

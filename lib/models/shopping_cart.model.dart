@@ -8,6 +8,7 @@ class ShoppingCartModel with _$ShoppingCartModel {
   factory ShoppingCartModel({
     required final int id,
     required final List<PackageModel> packages,
+    @Default({}) final Set<int> packagesAdded,
     final DateTime? bookingDateTime,
     required final bool hasHardCopy,
     required final num totalCost,
