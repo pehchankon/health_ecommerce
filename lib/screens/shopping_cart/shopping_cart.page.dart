@@ -64,6 +64,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
                 height: 15.h,
                 child: HardCopyReportCard(),
               ),
+              SizedBox(height: 4.h),
             ],
           ),
         ),
