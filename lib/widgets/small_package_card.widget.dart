@@ -4,6 +4,7 @@ import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/models/package.model.dart';
 import 'package:alemeno_intern/textStyles.dart';
 import 'package:alemeno_intern/widgets/custom_button.widget.dart';
+import 'package:alemeno_intern/widgets/generic_card_outline.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,18 +20,8 @@ class SmallPackageCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final shoppingCartCubit = context.read<ShoppingCartCubit>();
 
-    return Stack(
+    return GenericCardOutline(
       children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            border: Border.all(
-              color: Color(0xFFD3D3D3),
-              width: 0.5.sp,
-            ),
-          ),
-          width: double.infinity,
-        ),
         Positioned(
           right: 2.w,
           top: 5.h,

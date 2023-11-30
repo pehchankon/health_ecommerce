@@ -54,7 +54,7 @@ class ShoppingCartPage extends StatelessWidget {
               ),
               SizedBox(height: 1.h),
               SizedBox(
-                height: 180,
+                height: 22.h,
                 child: CartPackageCard(
                   package: packages[0],
                 ),

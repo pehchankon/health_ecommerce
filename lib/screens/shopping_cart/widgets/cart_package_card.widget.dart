@@ -1,6 +1,7 @@
 import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
 import 'package:alemeno_intern/models/package.model.dart';
+import 'package:alemeno_intern/widgets/generic_card_outline.widget.dart';
 import 'package:alemeno_intern/textStyles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,42 +11,28 @@ class CartPackageCard extends StatelessWidget {
   CartPackageCard({super.key, required this.package});
 
   final PackageModel package;
-  late final int numberOfTests = package.tests.length;
 
   @override
   Widget build(BuildContext context) {
-
-    return Container(
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              border: Border.all(
-                color: Color(0xFFD3D3D3),
-                width: 0.5.sp,
-              ),
-            ),
-            width: double.infinity,
-          ),
-          Container(
-            alignment: Alignment.center,
-            height: 5.h,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: AppColors.primaryPurpleColor.withOpacity(0.8),
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(5),
-              ),
-            ),
-            child: Text(
-              'Pathology Tests',
-              style: AppTextStyles.primaryWhiteBoldText14,
+    return GenericCardOutline(
+      children: [
+        Container(
+          alignment: Alignment.center,
+          height: 5.h,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: AppColors.primaryPurpleColor.withOpacity(0.8),
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(5),
             ),
           ),
-          _body(),
-        ],
-      ),
+          child: Text(
+            'Pathology Tests',
+            style: AppTextStyles.primaryWhiteBoldText14,
+          ),
+        ),
+        _body(),
+      ],
     );
   }
 
