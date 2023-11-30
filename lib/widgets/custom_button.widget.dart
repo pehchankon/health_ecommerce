@@ -59,6 +59,7 @@ class _CustomButtonState extends State<CustomButton> {
     late final Color _buttonColor;
     late final double _padding;
     late final TextStyle _textStyle;
+    late final double _borderRadius;
 
     if (widget.isDisabled) {
       _text = widget.text;
@@ -79,16 +80,19 @@ class _CustomButtonState extends State<CustomButton> {
           ? AppTextStyles.primaryWhiteBoldText8
           : AppTextStyles.primaryPurpleMediumText8;
       _padding = 5.sp;
+      _borderRadius = 5;
     } else if (widget.buttonSize == ButtonSize.medium) {
       _textStyle = widget.isFilled
           ? AppTextStyles.primaryWhiteBoldText12
           : AppTextStyles.primaryPurpleMediumText12;
       _padding = 8.sp;
+      _borderRadius = 5;
     } else if (widget.buttonSize == ButtonSize.large) {
       _textStyle = widget.isFilled
           ? AppTextStyles.primaryWhiteBoldText14
           : AppTextStyles.primaryPurpleMediumText14;
       _padding = 14.sp;
+      _borderRadius = 10;
     }
 
     return GestureDetector(
@@ -99,7 +103,7 @@ class _CustomButtonState extends State<CustomButton> {
         padding: EdgeInsets.all(_padding),
         decoration: BoxDecoration(
           color: widget.isFilled ? _buttonColor : Colors.transparent,
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.circular(_borderRadius),
           border: Border.all(
             color:
                 widget.isFilled ? _buttonColor : AppColors.primaryPurpleColor,

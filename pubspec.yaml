@@ -13,9 +13,11 @@ dependencies:
   flutter_svg: ^2.0.9
   freezed_annotation: ^2.4.1
   google_fonts: ^6.1.0
+  intl: ^0.18.1
   json_annotation: ^4.8.1
   provider: ^6.1.1
   sizer: ^2.0.15
+  table_calendar: ^3.0.9
 
 dev_dependencies:
   flutter_test:

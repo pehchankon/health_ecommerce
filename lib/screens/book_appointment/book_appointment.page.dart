@@ -1,31 +1,32 @@
-import 'package:alemeno_intern/blocs/shopping_cart.bloc.dart';
 import 'package:alemeno_intern/colors.dart';
 import 'package:alemeno_intern/constants.dart';
-import 'package:alemeno_intern/models/package.model.dart';
-import 'package:alemeno_intern/models/test.model.dart';
-import 'package:alemeno_intern/screens/shopping_cart/widgets/hard_copy_report_card.widget.dart';
-import 'package:alemeno_intern/screens/shopping_cart/widgets/select_date_card.widget.dart';
-import 'package:alemeno_intern/screens/shopping_cart/widgets/total_cost_card.widget.dart';
+import 'package:alemeno_intern/screens/book_appointment/widgets/date_pick.widget.dart';
+import 'package:alemeno_intern/screens/book_appointment/widgets/time_pick.widget.dart';
 import 'package:alemeno_intern/textStyles.dart';
-import 'package:alemeno_intern/screens/shopping_cart/widgets/cart_package_card.widget.dart';
 import 'package:alemeno_intern/widgets/custom_button.widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 
-class ShoppingCartPage extends StatelessWidget {
-  ShoppingCartPage({super.key});
-  late final List<PackageModel> packages;
+class BookAppointmentPage extends StatefulWidget {
+  BookAppointmentPage({
+    super.key,
+    required this.callback,
+  });
+  final Function(DateTime dateTime) callback;
+
+  @override
+  State<BookAppointmentPage> createState() => _BookAppointmentPageState();
+}
+
+class _BookAppointmentPageState extends State<BookAppointmentPage> {
+  DateTime? date, time;
 
   @override
   Widget build(BuildContext context) {
-    final shoppingCartCubit = context.read<ShoppingCartCubit>();
-    packages = shoppingCartCubit.state;
-
     return Scaffold(
       appBar: _appBar(context),
-      bottomNavigationBar: _bottomBar(),
+      bottomNavigationBar: _bottomBar(context),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -34,30 +35,28 @@ class ShoppingCartPage extends StatelessWidget {
             children: [
               SizedBox(height: 1.h),
               Text(
-                'Order review',
-                style: AppTextStyles.primaryPurpleMediumText20,
+                'Select Date',
+                style: AppTextStyles.titleBlackBoldText14,
               ),
               SizedBox(height: 1.h),
-              SizedBox(
-                height: 22.h,
-                child: CartPackageCard(
-                  package: packages[0],
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 3.w),
+                child: DatePick(
+                  onChanged: (DateTime selectedDay) {
+                    setState(() => date = selectedDay);
+                  },
                 ),
               ),
-              SizedBox(height: 2.h),
-              SizedBox(
-                height: 10.h,
-                child: SelectDateCard(callback: (dateTime) => print(dateTime)),
+              SizedBox(height: 4.h),
+              Text(
+                'Select Time',
+                style: AppTextStyles.titleBlackBoldText14,
               ),
               SizedBox(height: 2.h),
-              SizedBox(
-                height: 23.h,
-                child: TotalCostCard(packages: packages),
-              ),
-              SizedBox(height: 2.h),
-              SizedBox(
-                height: 15.h,
-                child: HardCopyReportCard(),
+              TimePick(
+                onChanged: (DateTime selectedTime) {
+                  setState(() => time = selectedTime);
+                },
               ),
             ],
           ),
@@ -66,16 +65,26 @@ class ShoppingCartPage extends StatelessWidget {
     );
   }
 
-  Container _bottomBar() {
+  Container _bottomBar(BuildContext context) {
     return Container(
       height: 7.h,
       padding: EdgeInsets.symmetric(horizontal: 5.w),
       child: Column(
         children: [
           CustomButton(
-            text: 'Schedule',
-            onTap: () {},
-            isDisabled: true,
+            text: 'Confirm',
+            onTap: () {
+              final _dateTime = DateTime(
+                date!.year,
+                date!.month,
+                date!.day,
+                time!.hour,
+                time!.minute,
+              );
+              widget.callback(_dateTime);
+              Navigator.pop(context);
+            },
+            isDisabled: date == null || time == null,
             buttonSize: ButtonSize.large,
           ),
         ],
@@ -87,7 +96,7 @@ class ShoppingCartPage extends StatelessWidget {
     return AppBar(
       systemOverlayStyle: kSystemUiOverlayStyle,
       title: Text(
-        'My cart',
+        'Book Appointment',
         style: AppTextStyles.titleBlackMediumText20,
       ),
       centerTitle: false,

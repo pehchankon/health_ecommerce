@@ -79,6 +79,26 @@ class AppTextStyles {
     color: AppColors.appBarTitleBlackColor,
     fontSize: 18.sp,
   );
+  static final TextStyle titleBlackMediumText16 =
+    titleBlackMediumText20.copyWith(
+      fontSize: 14.5.sp,
+  );
+
+
+  //// title black bold text w700
+  static final TextStyle titleBlackBoldText14 = GoogleFonts.inter(
+    fontWeight: FontWeight.w700,
+    color: AppColors.appBarTitleBlackColor,
+    fontSize: 12.5.sp,
+  );
+
+  
+  //// title black text w400
+  static final TextStyle titleBlackText14 = GoogleFonts.inter(
+    fontWeight: FontWeight.w400,
+    color: AppColors.appBarTitleBlackColor,
+    fontSize: 12.5.sp,
+  );
 
 
   //// secondary blue-grey text w400
@@ -106,6 +126,14 @@ class AppTextStyles {
   );
 
 
+  //// grey-alt2 medium text w500
+  static final TextStyle greyAltMediumText2_12 = GoogleFonts.inter(
+    fontWeight: FontWeight.w500,
+    color: AppColors.greyAlt2Color,
+    fontSize: 11.2.sp,
+  );
+
+
   //// grey text w400
   static final TextStyle greyText6 = GoogleFonts.inter(
     fontWeight: FontWeight.w400,
@@ -122,6 +150,11 @@ class AppTextStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.primaryBlackColor,
     fontSize: 16.5.sp,
+  );
+  static final TextStyle primaryBlackMediumText12_Calendar = 
+    primaryBlackMediumText18.copyWith(
+      fontSize: 11.2.sp,
+      color: AppColors.primaryBlackColor.withOpacity(0.8),
   );
 
 
